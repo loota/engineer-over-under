@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Laskuri</h1>
+		<span id="count">0</span>
+		<button>Lisää</button>
+		<script>
+			const button = document.querySelector('button')
+			const count = document.querySelector('#count')
+
+			button.addEventListener('click', function() {
+				count.innerHTML = parseInt(count.innerHTML, 10) + 1
+			})
+		</script>
+
+	</body>
+</html>
+

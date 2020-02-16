@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	</head>
+
+	<body>
+		<div id="root">
+		<script type="text/babel">
+			function Header(props) {
+				return <h1>{props.value}</h1>
+			}
+
+			function Count(props) {
+				return <span>{props.value}</span>
+			}
+
+			function GenericButton(props) {
+				return <button onClick={props.onClick}>{props.value}</button>
+			}
+
+			function Incrementor(props) {
+				return <GenericButton value={props.value} onClick={props.onClick} />
+			}
+
+			class Counter extends React.Component {
+				constructor(props) {
+					super(props);
+					this.state = {
+						count: 0
+					}
+				}
+				handleIncrementor() {
+					this.setState({count: this.state.count + 1})
+				}
+
+				render() {
+					return (
+						<div>
+							<Header value="Laskuri" />
+							<Count value={this.state.count} />
+							<Incrementor value="Lisää" onClick={() => this.handleIncrementor()} />
+						</div>
+					);
+				}
+			}
+
+			const domContainer = document.querySelector('#root');
+			ReactDOM.render(<Counter />, domContainer)
+		</script>
+	</body>
+</html>
